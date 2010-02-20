@@ -1,0 +1,9 @@
+
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
+
+PROJECT(mockcpp)
+
+INCLUDE(ProjectVar.txt)
+
+ADD_SUBDIRECTORY(src)
+

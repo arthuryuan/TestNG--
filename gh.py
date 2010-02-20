@@ -27,6 +27,7 @@ hdr_template = '''
 #define __TESTNGPP_%s_H__
 
 #include <testngpp/testngpp.h>
+%s
 
 TESTNGPP_NS_START
 
@@ -109,6 +110,13 @@ def seperate(name):
 
   return [word]
 
+def get_includes(parents):
+   result = ""
+   for parent in parents:
+      result = result + "#include <testngpp/%s.h>\n"
+
+   return result
+
 def get_inheritance(parents):
    result = ""
    if len(parents) > 0:
@@ -124,7 +132,7 @@ def get_header_content(names):
    parents = get_inheritance(names[1:])
    words = ["".join(word) for word in seperate(name)]
    macro = "_".join(words).upper()
-   return hdr_template % (macro, macro, name, name, parents, name, name, name)
+   return hdr_template % (macro, macro, get_includes(names[1:]), name, name, parents, name, name, name)
 
 def generate_header(names):
    file_name = names[0] + ".h"

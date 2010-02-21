@@ -31,11 +31,11 @@ TESTNGPP_NS_START
 ////////////////////////////////////////////
 struct ModuleLoader
 {
-	virtual void load
+   virtual void load
       ( const std::string& modulePath ) 
          TESTNGPP_THROW(TESTNGPP_NS::Error) = 0;
 
-	virtual void load
+   virtual void load
       ( const StringList& searchingPaths
       , const std::string& modulePath )
          TESTNGPP_THROW(TESTNGPP_NS::Error) = 0;

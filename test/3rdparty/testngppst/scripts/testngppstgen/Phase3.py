@@ -16,7 +16,7 @@ fixture_re1  = re.compile( \
    re.UNICODE)
 
 fixture_re2  = re.compile( \
-   r'''^\s*(struct|class)\s+(?P<fixtureId>[A-Za-z_][A-Za-z0-9_]*)\s*:\s*public\s+((TESTNGPPST_NS|TESTCPP_NS|testngppst|testcpp)\s*::)?\s*TestFixture\s*$''' )
+   r'''^\s*(struct|class)\s+(?P<fixtureId>[A-Za-z_][A-Za-z0-9_]*)\s*:\s*public\s+((TESTNGPP_NS|TESTCPP_NS|testngpp|testcpp)\s*::)?\s*TestFixture\s*$''' )
 
 fixture_re3  = re.compile( \
    r'''^\s*(struct|class)\s+(?P<fixtureId>[A-Za-z_][A-Za-z0-9_]*)\s*:\s*public\s+((CxxTest)\s*::)?\s*TestSuite\s*$''' )
@@ -24,15 +24,15 @@ fixture_re3  = re.compile( \
 def is_fixture_def(line):
    matched = fixture_re1.match(line)
    if matched:
-      return "Test"+matched.group("fixtureId"), matched.group("fixtureName")
+      return "Test", matched.group("fixtureId"), matched.group("fixtureName")
 
    matched = fixture_re2.match(line)
    if matched:
-      return matched.group("fixtureId"), None
+      return "", matched.group("fixtureId"), None
 
    matched = fixture_re3.match(line)
    if matched:
-      return matched.group("fixtureId"), None
+      return "", matched.group("fixtureId"), None
 
    return None
    

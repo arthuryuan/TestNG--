@@ -12,8 +12,9 @@ from Name import *
 class Fixture:
    ########################################
    def __init__(self, name, file, line, tag):
-      self.id   = name[0]
-      self.name = name[1]
+      self.prefix = name[0]
+      self.id   = name[1]
+      self.name = name[2]
       if self.name != None:
          self.name = escape_name(self.name)
       self.scope = TestScope("::", None, None)
@@ -38,7 +39,7 @@ class Fixture:
 
    ########################################
    def get_id(self):
-      return self.id
+      return self.prefix + self.id
 
    ########################################
    def get_name(self):

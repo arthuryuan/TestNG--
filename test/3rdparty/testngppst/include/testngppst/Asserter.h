@@ -58,7 +58,7 @@ TESTNGPPST_NS_START
 
 //////////////////////////////////////////////////////////////////
 #define __TESTNGPPST_ASSERT_EQUALITY(expected, expected_equality, wrong_equality, value) do {\
-   TESTNGPPST_TYPEOF(expected) __testngppst_expected = (expected); \
+   TESTNGPPST_TYPEOF(value) __testngppst_expected = (expected); \
    TESTNGPPST_TYPEOF(value) __testngppst_value = (value); \
    if(__testngppst_expected wrong_equality __testngppst_value) { \
       std::stringstream ss; \

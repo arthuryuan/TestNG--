@@ -78,13 +78,13 @@ FIXTURE(DLModuleLoader)
    {
       void * ptr;
       ASSERT_THROWS_NOTHING(ptr = loader->findSymbol("get_suite"));
-      ASSERT_NE((void*)0, ptr);
+      ASSERT_NE(0, ptr);
 
       typedef const TESTNGPP_NS::SuiteInfoReader * const (*SuiteGetter)();
       SuiteGetter get_suite = (SuiteGetter)ptr;
       const TESTNGPP_NS::SuiteInfoReader* const suite = get_suite();
      
-      ASSERT_TRUE(0 != suite);
+      ASSERT_NE(0, suite);
 
       ASSERT_EQ("MySuite", suite->getName());
     

@@ -17,7 +17,7 @@ ADD_DEFINITIONS(
 )
 
 SET(UT_CASES
-   desc/TestCaseInfoReader_UT.h
+   desc/SuiteInfoReader_UT.h
    loaders/DLModuleLoader_UT.h
 )
 

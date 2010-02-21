@@ -39,7 +39,7 @@ struct DLModuleLoader
       ( const std::string& modulePath )
          TESTNGPP_THROW(TESTNGPP_NS::Error);
 
-	void load
+   void load
       ( const StringList& searchingPaths \
       , const std::string& modulePath)
          TESTNGPP_THROW(TESTNGPP_NS::Error);

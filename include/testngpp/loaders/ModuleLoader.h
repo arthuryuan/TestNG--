@@ -40,8 +40,7 @@ struct ModuleLoader
       , const std::string& modulePath )
          TESTNGPP_THROW(TESTNGPP_NS::Error) = 0;
 
-   virtual void
-   unload() = 0;
+   virtual void unload() = 0;
 
    virtual void* findSymbol
       ( const std::string& symbol ) 

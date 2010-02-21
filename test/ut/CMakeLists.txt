@@ -18,9 +18,11 @@ ADD_DEFINITIONS(
 
 SET(UT_CASES
    desc/TestCaseInfoReader_UT.h
+   loaders/DLModuleLoader_UT.h
 )
 
 LINK_DIRECTORIES(
+  ${PROJECT_HOME}/src/loaders
   ${CMAKE_BINARY_DIR}/3rdparty/testngppst/src)
 
 INCLUDE_DIRECTORIES(BEFORE 
@@ -45,6 +47,7 @@ FOREACH(CASE ${UT_CASES})
   ADD_LIBRARY(${CASE_MODULE} MODULE ${CASE_SRC})
 
   TARGET_LINK_LIBRARIES(${CASE_MODULE}
+    testngpp-module-loader
     testngppst
     mockcpp)
 
@@ -57,4 +60,4 @@ FOREACH(CASE ${UT_CASES})
   ADD_DEPENDENCIES(${CASE_MODULE} ${CASE_NAME})
 ENDFOREACH()
 
-
+ADD_LIBRARY(MySuite MODULE desc/MySuite.cpp)

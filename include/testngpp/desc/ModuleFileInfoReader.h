@@ -17,34 +17,37 @@
     along with TestNG++.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef __TESTNGPP_FIXTURE_INFO_H__
-#define __TESTNGPP_FIXTURE_INFO_H__
+#ifndef __TESTNGPP_MODULE_FILE_INFO_READER_H__
+#define __TESTNGPP_MODULE_FILE_INFO_READER_H__
+
+#include <string>
 
 #include <testngpp/testngpp.h>
-#include <testngpp/desc/FixtureInfoReader.h>
 
 TESTNGPP_NS_START
 
-struct FixtureInfoImpl;
+struct FixtureInfoReader;
 
 //////////////////////////////////////
-struct FixtureInfo 
-      : public FixtureInfoReader
+struct ModuleFileInfoReader 
 {
-   const TestCaseInfoReader* const
-   getTestCase(unsigned int index)
-   {
-      if(index >= numberOfTestCases())
-      { return 0; }
+   virtual
+   const std::string
+   getSuiteName() const     = 0;
 
-      return getTestCases()[index];
-   }
+   virtual
+   const std::string
+   getName() const          = 0;
 
-private:
+   virtual
+   const unsigned int
+   numberOfFixtures() const = 0;
 
-   virtual const TestCaseInfoReader* const * const
-   getTestCases() const = 0;
+   virtual
+   const FixtureInfoReader* const * const
+   getFixtures() const      = 0;
 
+   virtual ~ModuleFileInfoReader() {}
 };
 
 //////////////////////////////////////

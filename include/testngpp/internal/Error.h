@@ -1,7 +1,6 @@
-
 /**
     TestNG++ is a practical, easy-to-use C/C++ xUnit framework.
-    Copyright (C) <2010>  <Arthur Yuan: arthur.ii.yuan@gmail.com>
+    Copyright (C) <2009>  <Arthur Yuan: arthur.ii.yuan@gmail.com>
 
     TestNG++ is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,30 +16,39 @@
     along with TestNG++.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef __TESTNGPP_TEST_MODULE_FILE_H__
-#define __TESTNGPP_TEST_MODULE_FILE_H__
+#ifndef __TESTNGPP_ERROR_H__
+#define __TESTNGPP_ERROR_H__
+
+#include <exception>
+#include <string>
 
 #include <testngpp/testngpp.h>
 
 TESTNGPP_NS_START
 
-struct FixtureInfoReader;
-
-//////////////////////////////////////
-struct TestModuleFile 
+//////////////////////////////////////////////
+struct Error
+   : public std::exception
 {
-   virtual const std::string& getSuiteName() const = 0;
-   virtual const std::string& getName() const = 0;
-   virtual const unsigned int numberOfFixtures() const = 0;
-   virtual const FixtureInfoReader* const 
-   getFixture(unsigned int index) const = 0;
+   Error(const std::string& msg)
+		: reason(msg)
+   {}
 
-   virtual ~TestModuleFile() {}
+   ~Error() TESTNGPP_THROW () {}
+
+   const char* what() const TESTNGPP_THROW ()
+   {
+      return reason.c_str();
+   }
+
+private:
+
+   std::string reason;
 };
 
-//////////////////////////////////////
+//////////////////////////////////////////////
 
 TESTNGPP_NS_END
 
-#endif 
+#endif
 

@@ -20,19 +20,28 @@
 #ifndef __TESTNGPP_SUITE_INFO_READER_H__
 #define __TESTNGPP_SUITE_INFO_READER_H__
 
+#include <string>
+
 #include <testngpp/testngpp.h>
 
 TESTNGPP_NS_START
 
-struct TestModuleFile;
+struct ModuleFileInfoReader;
 
 //////////////////////////////////////
 struct SuiteInfoReader 
 {
-   virtual const std::string getName() const = 0;
-   virtual const unsigned int numberOfModuleFiles() const = 0;
-   virtual const TestModuleFile* const 
-   getModuleFile(unsigned int index) const = 0;
+   virtual
+   const std::string
+   getName() const             = 0;
+
+   virtual
+   const unsigned int
+   numberOfModuleFiles() const = 0;
+
+   virtual
+   const ModuleFileInfoReader* const * const
+   getModuleFiles() const      = 0;
 
    virtual ~SuiteInfoReader() {}
 };

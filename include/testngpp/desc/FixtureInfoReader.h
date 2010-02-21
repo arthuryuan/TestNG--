@@ -31,15 +31,37 @@ struct TestCaseInfoReader;
 //////////////////////////////////////
 struct FixtureInfoReader 
 {
-   virtual const std::string& getName() const = 0;
-   virtual const std::string& getSuiteName() const = 0;
-   virtual const std::string& getModuleFileName() const = 0;
-   virtual const std::string& getFullPath() const = 0;
-   virtual const std::string& getFileName() const = 0;
-   virtual const unsigned int getLine() const = 0;
-   virtual unsigned int numberOfTestCases() const = 0;
-   virtual const TestCaseInfoReader* const 
-           getTestCase(unsigned int index) = 0;
+   virtual
+   const std::string 
+   getName() const           = 0;
+
+   virtual
+   const std::string
+   getSuiteName() const      = 0;
+
+   virtual
+   const std::string 
+   getModuleFileName() const = 0;
+
+   virtual
+   const std::string
+   getFullPath() const       = 0;
+
+   virtual
+   const std::string
+   getFileName() const       = 0;
+
+   virtual
+   const unsigned int
+   getLine() const           = 0;
+
+   virtual
+   const unsigned int
+   numberOfTestCases() const = 0;
+
+   virtual
+   const TestCaseInfoReader* const * const
+   getTestCases() const      = 0;
 
    virtual ~FixtureInfoReader() {}
 };
